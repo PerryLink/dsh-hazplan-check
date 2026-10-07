@@ -1,0 +1,22 @@
+{
+  "ruleId": "HZ-002",
+  "purpose": "分析输出应能列出所有分析的节点清单（依据 GB/T 35320-2017 6.6.3）",
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "HZ-002-compliant.json",
+      "expect": {
+        "ruleId": "HZ-002",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "HZ-002-unsafe.json",
+      "expect": {
+        "ruleId": "HZ-002",
+        "count": 1
+      }
+    }
+  ]
+}

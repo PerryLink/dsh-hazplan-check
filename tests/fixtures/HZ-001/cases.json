@@ -1,0 +1,22 @@
+{
+  "ruleId": "HZ-001",
+  "purpose": "每一个危险和可操作性问题都应作为单项记录，并与其原因一起记录（依据 GB/T 35320-2017 6.6.4）",
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "HZ-001-compliant.json",
+      "expect": {
+        "ruleId": "HZ-001",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "HZ-001-unsafe.json",
+      "expect": {
+        "ruleId": "HZ-001",
+        "count": 1
+      }
+    }
+  ]
+}

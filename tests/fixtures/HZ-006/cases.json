@@ -1,0 +1,22 @@
+{
+  "ruleId": "HZ-006",
+  "purpose": "工作表应能识别其分析对象（附录 A.2 为资料性附录，故为提示级）",
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "HZ-006-compliant.json",
+      "expect": {
+        "ruleId": "HZ-006",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "HZ-006-unsafe.json",
+      "expect": {
+        "ruleId": "HZ-006",
+        "count": 1
+      }
+    }
+  ]
+}

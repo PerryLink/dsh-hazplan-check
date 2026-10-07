@@ -1,0 +1,22 @@
+{
+  "ruleId": "HZ-003",
+  "purpose": "引导词应取自标准表1、表2；自定义引导词须按 6.4.3 事先定义并存档，故本条为提示级",
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "HZ-003-compliant.json",
+      "expect": {
+        "ruleId": "HZ-003",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "HZ-003-unsafe.json",
+      "expect": {
+        "ruleId": "HZ-003",
+        "count": 1
+      }
+    }
+  ]
+}

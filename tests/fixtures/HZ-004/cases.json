@@ -1,0 +1,22 @@
+{
+  "ruleId": "HZ-004",
+  "purpose": "记录中应能看出「哪个要素 + 哪个引导词 → 哪个偏离」",
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "HZ-004-compliant.json",
+      "expect": {
+        "ruleId": "HZ-004",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "HZ-004-unsafe.json",
+      "expect": {
+        "ruleId": "HZ-004",
+        "count": 1
+      }
+    }
+  ]
+}

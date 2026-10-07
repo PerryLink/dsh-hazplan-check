@@ -1,0 +1,221 @@
+# HAZOP 分析表核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ✅ 本次核查已取得 GB/T 35320-2017 的逐字条款，可放心引用：
+#    该标准 **2017-12-29 发布并实施，现行有效**，等同采用 IEC 61882:2001。
+#    修订计划 20220795-T-339 已于 2022-07-19 下达、现"正在审查"（拟等同 IEC 61882:2016），
+#    **尚未发布替代版本** → 上线前应复查是否已被替代。
+#
+# ⚠️ 本规则库的分层依据（决定严重级）：
+#   ⚠️ **本规则库没有任何 error 级规则**（2026-10-07 更正）。
+#   原先把 6.6.3 与 6.6.4 当作"可 error 的硬要求"，**这个判断不成立**：
+#   两条的原文都用「**宜**」（6.6.3「HAZOP 分析输出**宜**包括：」、6.6.4「……都**宜**作为单项记录」），
+#   而 **GB/T 35320-2017 是推荐性国家标准**（标准号带"/T"）。
+#   ⇒ **用"宜"的推荐性条款只能支撑 warn**；已把 HZ-001、HZ-002 降为 warn。
+#   其余规则为 warn 或 info，原因如下：
+#     - **附录 A.2 是「资料性附录」**：工作表列标题用"可为"，且原文写明"也可记录其他信息"、
+#       "工作表的版面设计各有不同" → **不存在强制列清单**，缺列只能提示，不能判不合格。
+#     - **第 4.2 条对节点划分只给原则**（"所选节点的大小取决于系统的复杂性和危险的严重程度"），
+#       **没有可枚举的判据** → 节点粒度不做自动判定。
+#     - **标准未规定风险等级的刻度**（第 6.5 条只提到"基于风险矩阵的风险分级…是有用的"，
+#       并指向 IEC 60300-3-9）→ 风险档位只能按本机构准则核对。
+#   **行业标准 SH/T 3240-2025 只核实了编号/名称/状态/日期与术语表，未取得正文条款，
+#     故本规则库不引用其任何条号。**
+#
+# ⚠️ 本插件**不判断原因是否找全、后果是否分析到位、安全措施是否充分、风险定级是否恰当**。
+#   那四项是 HAZOP 分析组的专业判断。本插件只核对**表内自洽与记录可追溯**。
+
+plugin: dsh-hazplan-check
+version: "2026.2"
+
+rules:
+  - id: HZ-001
+    title: 每一个危险和可操作性问题宜作为单项记录
+    severity: warn
+    basis:
+      document: 《危险与可操作性分析（HAZOP分析）应用指南》
+      number: GB/T 35320-2017
+      clause: '6.6.4'
+      excerpt: 每一个危险和可操作性问题都宜作为单项记录。
+      kind: direct
+      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    params:
+      check:
+        kind: presence
+        field: 偏差
+      requiredFields: []
+    note: >-
+      ⚠️ **本条严重级已于 2026-10-07 由 error 降为 warn**（见 rules/evidence/clause-verification-hazop.md）。
+      理由：所引 6.6.4 原文用的是「**宜**」——「每一个危险和可操作性问题都**宜**作为单项记录」，
+      且 GB/T 35320-2017 是**推荐性国家标准**（标准号带"/T"）。**用"宜"的条款不能支撑 error 级判定。**
+      6.6.4 要求在记录中"每一个危险和可操作性问题都宜作为单项记录"。
+      本条据此核对**偏差栏是否逐行填写**：一行一条问题，缺偏差的行无法追溯。
+      另注：该条还要求"无论系统中是否已有保护或报警，所有的危险和可操作性问题都宜和其发生的原因一起记录"，
+      因此**原因栏为空的行也是缺项**——把 requiredFields 配成 [偏差, 原因] 即可一并核对。
+      本条只核对栏目是否填写，**不判断该问题是否找全**。
+
+  - id: HZ-002
+    title: 工作表宜能列出全部已分析节点
+    severity: warn
+    basis:
+      document: 《危险与可操作性分析（HAZOP分析）应用指南》
+      number: GB/T 35320-2017
+      clause: '6.6.3'
+      excerpt: 列出所有分析的节点清单，以及没有被分析节点的理由。
+      kind: direct
+      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    params:
+      check:
+        kind: presence
+        field: 节点
+    note: >-
+      ⚠️ **本条严重级已于 2026-10-07 由 error 降为 warn**（见 rules/evidence/clause-verification-hazop.md）。
+      理由：所引 6.6.3 的完整原文是「HAZOP 分析输出**宜**包括：」，其下各项同样用「**宜**」；
+      且该标准是**推荐性**国家标准。**用"宜"的条款不能支撑 error 级判定。**
+      6.6.3 要求输出"列出所有分析的节点清单，以及没有被分析节点的理由"。
+      本条据此核对**节点栏是否逐行填写**：记录若无节点，节点清单无从生成，
+      也就无法说明哪些节点未被分析及其理由。
+      若工作表另有"未分析节点及理由"章节，应在材料顶层以 header 字段提供。
+      本条只核对节点是否填写，**不判断节点划分粒度是否恰当**（4.2 无判据）。
+
+  - id: HZ-003
+    title: 引导词应取自标准的引导词表
+    severity: warn
+    basis:
+      document: 《危险与可操作性分析（HAZOP分析）应用指南》
+      number: GB/T 35320-2017
+      clause: 表1、表2
+      excerpt: 无，没有｜完全没有达到设计意图；多，过量｜数量上的增加；少，减量｜数量上的减少；伴随｜性质上的变化（增多）；部分｜性质上的变化（减少）；相反｜与设计意图逻辑相反；异常｜完全替代
+      kind: direct
+      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    params:
+      check:
+        kind: enum
+        field: 引导词
+        values: [无, 没有, 多, 过量, 少, 减量, 伴随, 部分, 相反, 异常, 早, 晚, 先, 后]
+    alsoBasis:
+      - document: 《危险与可操作性分析（HAZOP分析）应用指南》
+        number: GB/T 35320-2017
+        clause: 6.4.3
+        excerpt: 所有引导词及其相关要素/特性组合都要被明确定义并存档。
+        kind: direct
+        source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    note: >-
+      表1 给出工艺参数类引导词（无/多/少/伴随/部分/相反/异常），
+      表2 给出与时间和先后顺序相关的引导词（早/晚/先/后），故 values 同时收录两表。
+      **注意用词**：国标用「相反」（不是"相逆"）、用「异常」对应英文 Other than。
+      **严重级为 warn 而非 error**：6.4.3 允许自定义引导词，只要"在分析前明确定义并存档"，
+      因此使用表外引导词**不必然不合规**；此时应确认分析前是否已定义并存档。
+      若本机构规定只准使用标准引导词，把 values 换成该清单即可收紧，无需改代码。
+
+  - id: HZ-004
+    title: 偏差应写清对应的工艺参数与引导词
+    severity: warn
+    basis:
+      document: 《危险与可操作性分析（HAZOP分析）应用指南》
+      number: GB/T 35320-2017
+      clause: '3.3'
+      excerpt: 偏离 deviation 设计意图的偏差。
+      kind: derived-from-principle
+      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    params:
+      check:
+        kind: presenceAny
+        fields: [偏差, 参数, 工艺参数]
+    alsoBasis:
+      - document: 《危险与可操作性分析（HAZOP分析）应用指南》
+        number: GB/T 35320-2017
+        clause: 6.4.3
+        excerpt: 如果某一组合在指定设计中有一种以上解释，则这些解释均建议被一一列出。
+        kind: direct
+        source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    note: >-
+      3.3 把"偏离"定义为"设计意图的偏差"，6.4.3 要求引导词与"相关要素/特性"的组合被明确
+      定义并存档 —— 两者合起来意味着记录中应能看出"哪个要素 + 哪个引导词 → 哪个偏离"。
+      本条要求每行至少提供"偏差"或"参数/工艺参数"其中之一，避免出现只有后果没有偏离的行。
+      **严重级为 warn**：3.3 是术语定义、6.4.3 用"宜"，都属原则性要求。
+      更细的**偏差派生一致性核对**（偏差文字是否等于"参数+引导词"）由 HZ-007 承担。
+
+  - id: HZ-005
+    title: 风险等级应按本机构风险准则核对
+    severity: info
+    basis:
+      document: 《危险与可操作性分析（HAZOP分析）应用指南》
+      number: GB/T 35320-2017
+      clause: '6.5'
+      excerpt: 对某些应用来说，根据后果潜在的严重性或基于风险矩阵的风险分级对偏离进行分类是有用的。
+      kind: institutional-configuration
+      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    alsoBasis:
+      - document: 《风险管理 风险评估技术》
+        number: GB/T 27921-2023
+        clause: 附录B.10.3（资料性）
+        excerpt: 后果/可能性矩阵：通过选择结果/可能性因素，并将它们显示在矩阵上来比较单个风险，其中一个轴是结果，另一个是可能性。
+        kind: institutional-configuration
+        source: http://gzhxaq.com/mydata/law/202311/20/17004780854298.htm
+    params:
+      check:
+        kind: enum
+        field: 风险等级
+        values: []
+    note: >-
+      values 出厂为空，表示**未配置**，本条进 skipped。
+      **标准未规定风险等级的刻度**：6.5 只说风险分级"是有用的"，并把进一步论证指向
+      IEC 60300-3-9；GB/T 27921-2023 附录 B.10.3 只**资料性**地描述后果/可能性矩阵，
+      不给统一刻度。因此档位必须来自**本机构风险准则**，本插件不硬编码。
+      配置示例：values: [高, 中, 低] 或 [Ⅰ, Ⅱ, Ⅲ, Ⅳ]。
+      若项目声明采用矩阵法，建议同时给出矩阵定义来源——本插件不代为判断。
+      本条**只核对所填值是否在册**，**不判断定级是否恰当**。
+
+  - id: HZ-006
+    title: 工作表应能识别其分析对象
+    severity: warn
+    basis:
+      document: 《危险与可操作性分析（HAZOP分析）应用指南》
+      number: GB/T 35320-2017
+      clause: 附录A.2（资料性）
+      excerpt: 表头含项目名称、分析对象、设计意图、节点、小组成员、分析的图纸或文件、日期和页码。
+      kind: derived-from-principle
+      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    params:
+      check:
+        kind: headerPresence
+        fields: [subject]
+      requireHeader: true
+    note: >-
+      附录 A.2 的表头项含"项目名称、分析对象、设计意图、节点、小组成员、分析的图纸或文件、日期和页码"；
+      记录若无法识别分析对象，结论就无法追溯到被分析的边界。
+      **严重级为 warn**：附录 A.2 是**资料性附录**，表头项为建议而非强制。
+      requireHeader 为 false 时本条不执行。
+
+  - id: HZ-007
+    title: 偏差文字应由工艺参数与引导词构成
+    severity: warn
+    basis:
+      document: 《危险与可操作性分析（HAZOP分析）应用指南》
+      number: GB/T 35320-2017
+      clause: 6.4.3
+      excerpt: 所有引导词及其相关要素/特性组合都要被明确定义并存档。
+      kind: derived-from-principle
+      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+    params:
+      check:
+        kind: derivedDeviation
+    note: >-
+      本条是 HAZOP 记录中**唯一可机械化判定**的自洽性质：偏差 = 要素（工艺参数）+ 引导词。
+      依据为 6.4.3（引导词与要素的组合应被明确定义）与 3.3（偏离是设计意图的偏差）的合取，
+      属原则性推论，故封顶 warn。
+      本条只在**同时提供参数、引导词与偏差三列**时执行；比对时忽略空白与常见连接符
+      （''、空格、+、＋、、、/、-、—、的、：），并同时接受两种语序。
+      命中通常意味着复制粘贴串行，**不代表该偏差在工艺上不成立**：
+      有些分析表会写更完整的偏离描述，此时可把该行排除或在模板中统一写法。
+
+disabled: []

@@ -1,0 +1,31 @@
+{
+  "ruleId": "HZ-005",
+  "purpose": "风险等级应按本机构风险准则核对（标准未规定刻度）",
+  "configure": {
+    "HZ-005": {
+      "riskLevels": [
+        "高",
+        "中",
+        "低"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "HZ-005-compliant.json",
+      "expect": {
+        "ruleId": "HZ-005",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "HZ-005-unsafe.json",
+      "expect": {
+        "ruleId": "HZ-005",
+        "count": 1
+      }
+    }
+  ]
+}

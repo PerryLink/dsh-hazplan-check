@@ -1,0 +1,22 @@
+{
+  "ruleId": "HZ-007",
+  "purpose": "偏差文字应由工艺参数与引导词构成（HAZOP 记录中唯一可机械判定的自洽性质）",
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "HZ-007-compliant.json",
+      "expect": {
+        "ruleId": "HZ-007",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "HZ-007-unsafe.json",
+      "expect": {
+        "ruleId": "HZ-007",
+        "count": 1
+      }
+    }
+  ]
+}
