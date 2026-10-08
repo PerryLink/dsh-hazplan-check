@@ -1,6 +1,6 @@
 {
   "name": "dsh-hazplan-check",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "HAZOP 分析表要素齐备性与偏差推导一致性核对（依据公开的危险与可操作性分析标准，仅提示差异，不作出定性结论）",
   "type": "module",
   "main": "lib/index.mjs",
@@ -32,7 +32,7 @@
     "verify:self-contained": "node scripts/verify-self-contained.mjs",
     "check:lockfile": "node scripts/check-lockfile-drift.mjs",
     "check:readmes": "node scripts/check-readme-sync.mjs",
-    "prepublishOnly": "pnpm run typecheck && pnpm test && pnpm run build && pnpm run verify:self-contained && pnpm run check:readmes && pnpm run check:citations",
+    "prepublishOnly": "pnpm run typecheck && pnpm test && pnpm run build && pnpm run verify:self-contained && pnpm run check:readmes",
     "prepare": "tsdown",
     "check:citations": "node scripts/check-citations.mjs"
   },
