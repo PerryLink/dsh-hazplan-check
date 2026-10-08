@@ -46,7 +46,7 @@ rules:
       clause: '6.6.4'
       excerpt: 每一个危险和可操作性问题都宜作为单项记录。
       kind: direct
-      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+      source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     params:
       check:
         kind: presence
@@ -71,7 +71,7 @@ rules:
       clause: '6.6.3'
       excerpt: 列出所有分析的节点清单，以及没有被分析节点的理由。
       kind: direct
-      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+      source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     params:
       check:
         kind: presence
@@ -95,7 +95,7 @@ rules:
       clause: 表1、表2
       excerpt: 无，没有｜完全没有达到设计意图；多，过量｜数量上的增加；少，减量｜数量上的减少；伴随｜性质上的变化（增多）；部分｜性质上的变化（减少）；相反｜与设计意图逻辑相反；异常｜完全替代
       kind: direct
-      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+      source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     params:
       check:
         kind: enum
@@ -107,7 +107,7 @@ rules:
         clause: 6.4.3
         excerpt: 所有引导词及其相关要素/特性组合都要被明确定义并存档。
         kind: direct
-        source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+        source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     note: >-
       表1 给出工艺参数类引导词（无/多/少/伴随/部分/相反/异常），
       表2 给出与时间和先后顺序相关的引导词（早/晚/先/后），故 values 同时收录两表。
@@ -125,7 +125,7 @@ rules:
       clause: '3.3'
       excerpt: 偏离 deviation 设计意图的偏差。
       kind: derived-from-principle
-      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+      source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     params:
       check:
         kind: presenceAny
@@ -136,7 +136,7 @@ rules:
         clause: 6.4.3
         excerpt: 如果某一组合在指定设计中有一种以上解释，则这些解释均建议被一一列出。
         kind: direct
-        source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+        source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     note: >-
       3.3 把"偏离"定义为"设计意图的偏差"，6.4.3 要求引导词与"相关要素/特性"的组合被明确
       定义并存档 —— 两者合起来意味着记录中应能看出"哪个要素 + 哪个引导词 → 哪个偏离"。
@@ -153,7 +153,7 @@ rules:
       clause: '6.5'
       excerpt: 对某些应用来说，根据后果潜在的严重性或基于风险矩阵的风险分级对偏离进行分类是有用的。
       kind: institutional-configuration
-      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+      source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     alsoBasis:
       - document: 《风险管理 风险评估技术》
         number: GB/T 27921-2023
@@ -184,7 +184,7 @@ rules:
       clause: 附录A.2（资料性）
       excerpt: 表头含项目名称、分析对象、设计意图、节点、小组成员、分析的图纸或文件、日期和页码。
       kind: derived-from-principle
-      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+      source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     params:
       check:
         kind: headerPresence
@@ -205,7 +205,7 @@ rules:
       clause: 6.4.3
       excerpt: 所有引导词及其相关要素/特性组合都要被明确定义并存档。
       kind: derived-from-principle
-      source: http://www.gzhxaq.com/mydata/law/202008/20/15979029769544.htm
+      source: https://hbba.sacinfo.org.cn/stdDetail/8fc5458a9fa6fa55ccf5d2056d9f5589
     params:
       check:
         kind: derivedDeviation
