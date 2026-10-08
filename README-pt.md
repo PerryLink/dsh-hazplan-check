@@ -1,4 +1,24 @@
-# dsh-hazplan-check
+# dsh-hazplan-check — Verificação da completude dos elementos de uma folha de trabalho HAZOP e da coerência na derivação dos desvios
+
+`dsh-hazplan-check` lê uma folha de trabalho HAZOP —linhas organizadas pelos próprios nomes de coluna da folha, em chinês ou em inglês, mais um cabeçalho opcional que declara o 分析对象— e verifica a completude e a rastreabilidade interna dessa mesma folha: se cada linha preenche as colunas exigidas pelo seu modelo (`偏差` e `原因` por omissão), se cada linha regista o seu `节点`, se os `引导词` vêm das tabelas 1 e 2 da norma ou da lista que o estudo declarou antecipadamente, se cada linha deixa ver de que elemento veio o desvio, se o `风险等级` sai do vocabulário de risco da sua organização, se a folha identifica o objeto de análise e se cada `偏差` é literalmente o `工艺参数` lido através do seu `引导词`; qualquer verificação que não possa correr por falta de uma coluna é reportada em `skipped` em vez de passar em silêncio.
+
+## O que ele responde
+
+| Você pergunta | O que ele responde |
+|---|---|
+| Uma linha regista o desvio mas deixa a causa em branco. Isso é reportado? | Sim. `HZ-001` exige os campos que cada linha tem de preencher; sem configuração, recorre ao par que a própria cláusula nomeia, `偏差` e `原因`, pelo que um `原因` em branco já é uma falha por si. Verifica que a coluna está preenchida, não que a lista de problemas esteja completa nem que a causa seja tecnicamente válida. |
+| Três linhas não têm nó nenhum. Isso é dito, e avalia-se como os nós foram divididos? | `HZ-002` reporta essas linhas num único registo e enumera os números de linha, porque um registo sem nós não permite gerar a lista de nós que a cláusula pede. Só verifica que `节点` está preenchido; não julga se a granularidade do nó é adequada, porque a cláusula 4.2 não dá critério, nem decide se algum nó ficou por analisar. |
+| O nosso estudo escreveu «相逆» na coluna `引导词`. Isso será assinalado? | `HZ-003` reporta-o como palavra-guia fora da lista: a norma escreve «相反», não «相逆», e as tabelas 1 e 2 fornecem 无/多/少/伴随/部分/相反/异常 e 早/晚/先/后. É um aviso e não um veredicto, porque uma palavra-guia definida e arquivada pelo estudo antes da análise é permitida — é por isso que a regra fica em `warn`. Uma instalação pode declarar a sua própria lista, e então só o que ficar fora dela é reportado. |
+| A coluna `偏差` diz «无流量», mas `工艺参数` é «温度» e `引导词` é «无». Isso é detetado? | `HZ-007` reporta a linha quando o `偏差` escrito não contém o `工艺参数` lido através do seu `引导词` em nenhuma das duas ordens; espaços e os separadores habituais (por exemplo `+`, `、`, `/`, `-`, `—`, `的`, `：`) não contam, pelo que 流量无, 流量 + 无 e 无流量 coincidem. Só corre quando as três colunas existem —caso contrário aparece em `skipped`— e um achado costuma indicar um copiar-colar, não que o desvio seja tecnicamente inválido. |
+| A coluna `风险等级` está preenchida com «中», mas nunca configurámos níveis de risco. O que vem na resposta? | `HZ-005` reporta-se a si própria em `skipped`, e não como aprovada: a norma não fixa uma escala de níveis de risco, por isso os níveis têm de vir dos critérios de risco da sua organização e a lista de origem está vazia. Depois de configurados, só verifica se o valor consta da lista, não se a classificação está correta, e a sua severidade está limitada a `info`. |
+| A folha não tem nenhuma linha que nomeie a unidade analisada. É uma falha? | `HZ-006` reporta-o uma vez, ao nível superior: sem objeto de análise, as conclusões não se conseguem remontar à fronteira analisada. A lista de cabeçalho em que se apoia vem de um anexo informativo —uma sugestão, não uma obrigação—, por isso a regra fica em `warn` e `requireHeader: false` desativa-a para folhas que legitimamente não a tenham. |
+
+## Normas que segue
+
+| Documento | Número | Regras que o citam |
+|---|---|---|
+| 《危险与可操作性分析（HAZOP分析）应用指南》 | GB/T 35320-2017 | HZ-001, HZ-002, HZ-003, HZ-004, HZ-005, HZ-006, HZ-007 |
+| 《风险管理 风险评估技术》 | GB/T 27921-2023 | HZ-005 |
 
 **Boundary:** this plugin checks one **HAZOP worksheet** for what a sheet can be held to — that every row
 records the analysis content your template requires, that each 偏差 actually follows from the 工艺参数 and

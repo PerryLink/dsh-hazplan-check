@@ -1,4 +1,24 @@
-# dsh-hazplan-check
+# dsh-hazplan-check — HAZOP worksheet element completeness and deviation derivation consistency check
+
+`dsh-hazplan-check` reads one HAZOP worksheet — rows keyed by the sheet's own column names, in Chinese or English, plus an optional header naming the 分析对象 — and checks that same sheet's completeness and internal traceability: that every row fills the fields your template requires (`偏差` and `原因` by default), that each row records its `节点`, that `引导词` come from the standard's tables 1 and 2 or from the list the study declared beforehand, that each row shows which element its deviation came from, that `风险等级` come from your own risk vocabulary, that the sheet names its analysis subject, and that every `偏差` is literally the `工艺参数` read through its `引导词`; a check that cannot run for want of a column is reported in `skipped` rather than passing silently.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| A row records the deviation but leaves the cause blank. Is that reported? | Yes. `HZ-001` requires the fields every row must fill; shipped unset, it falls back to the pair the clause itself names, `偏差` and `原因`, so a blank `原因` is a gap on its own. It checks that the column is filled, not that the problem list is complete or the cause technically sound. |
+| Three rows carry no node at all. Does the check say anything, and does it judge how the nodes were divided? | `HZ-002` reports those rows together and lists their row numbers, because a record without nodes cannot produce the node list the clause asks for. It checks only that `节点` is filled; it does not judge whether the node granularity is right, since clause 4.2 gives no criterion for it, and it does not decide whether any node was left unanalysed. |
+| Our study wrote 相逆 in the `引导词` column. Will that be flagged? | `HZ-003` reports it as a guide word outside the list: the standard's own wording is 「相反」, not 相逆, and tables 1 and 2 supply 无/多/少/伴随/部分/相反/异常 and 早/晚/先/后. The finding is a prompt rather than a verdict, because a guide word the study defined and archived before the analysis is permitted — which is why the rule sits at `warn`. A deployment can declare its own list instead, and then only words outside that list are reported. |
+| The `偏差` column reads 无流量, while `工艺参数` says 温度 and `引导词` says 无. Is that caught? | `HZ-007` reports the row when the written `偏差` does not contain the `工艺参数` read through its `引导词` in either word order; blanks and the usual separators (for example `+`, `、`, `/`, `-`, `—`, `的`, `：`) are ignored, so 流量无, 流量 + 无 and 无流量 all agree. It runs only when all three columns are present — otherwise it appears in `skipped` — and a hit means a likely copy-paste artefact, not that the deviation is technically wrong. |
+| The `风险等级` column is filled with 中, but we never configured a risk vocabulary. What comes back? | `HZ-005` reports itself in `skipped`, not as a pass: the standard fixes no risk-level scale, so the levels have to come from your own risk criteria and the shipped list is empty. Once levels are configured it only checks that the value is in the list, not whether the rating is correct, and its severity is capped at `info`. |
+| The worksheet has no line naming the unit it analyses. Is that a gap? | `HZ-006` reports it once, at the top level: without an analysis subject the conclusions cannot be traced back to the boundary that was analysed. The header list it rests on comes from an informative appendix — a suggestion, not a requirement — so the rule stays at `warn`, and `requireHeader: false` turns it off for sheets that legitimately carry none. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《危险与可操作性分析（HAZOP分析）应用指南》 | GB/T 35320-2017 | HZ-001, HZ-002, HZ-003, HZ-004, HZ-005, HZ-006, HZ-007 |
+| 《风险管理 风险评估技术》 | GB/T 27921-2023 | HZ-005 |
 
 **Boundary:** this plugin checks one **HAZOP worksheet** for what a sheet can be held to — that every row
 records the analysis content your template requires, that each 偏差 actually follows from the 工艺参数 and

@@ -1,4 +1,24 @@
-# dsh-hazplan-check
+# dsh-hazplan-check — Verificación de la completitud de los elementos de una hoja de trabajo HAZOP y de la coherencia en la derivación de las desviaciones
+
+`dsh-hazplan-check` lee una hoja de trabajo HAZOP —filas organizadas según los propios nombres de columna de la hoja, en chino o en inglés, más una cabecera opcional que declara el 分析对象— y comprueba la completitud y la trazabilidad interna de esa misma hoja: que cada fila rellene las columnas que exige su plantilla (`偏差` y `原因` por defecto), que cada fila registre su `节点`, que los `引导词` procedan de las tablas 1 y 2 de la norma o de la lista que el estudio declaró de antemano, que cada fila deje ver de qué elemento proviene la desviación, que el `风险等级` salga del vocabulario de riesgo de su organización, que la hoja identifique el objeto de análisis y que cada `偏差` sea literalmente el `工艺参数` leído a través de su `引导词`; toda comprobación que no pueda ejecutarse por falta de una columna se informa en `skipped` en lugar de pasar en silencio.
+
+## Qué responde
+
+| Usted pregunta | Qué responde |
+|---|---|
+| Una fila registra la desviación pero deja vacía la causa. ¿Se informa de ello? | Sí. `HZ-001` exige los campos que debe rellenar cada fila; sin configurar, recurre al par que la propia cláusula nombra, `偏差` y `原因`, de modo que un `原因` vacío ya es una falta por sí solo. Comprueba que la columna esté rellena, no que la lista de problemas esté completa ni que la causa sea técnicamente válida. |
+| Tres filas no llevan nodo alguno. ¿Se dice algo y se juzga cómo se dividieron los nodos? | `HZ-002` informa de esas filas en una sola entrada y enumera sus números de fila, porque un registro sin nodos no permite generar la lista de nodos que pide la cláusula. Solo comprueba que `节点` esté relleno; no juzga si el grano del nodo es adecuado, porque la cláusula 4.2 no da criterio, ni decide si algún nodo quedó sin analizar. |
+| Nuestro estudio escribió «相逆» en la columna `引导词`. ¿Se señalará? | `HZ-003` lo informa como palabra guía fuera de la lista: la norma dice «相反», no «相逆», y las tablas 1 y 2 aportan 无/多/少/伴随/部分/相反/异常 y 早/晚/先/后. Es un aviso y no un veredicto, porque una palabra guía definida y archivada por el estudio antes del análisis está permitida — por eso la regla se queda en `warn`. Una implantación puede declarar su propia lista y entonces solo se informa de lo que quede fuera de ella. |
+| La columna `偏差` dice «无流量», pero `工艺参数` es «温度» y `引导词` es «无». ¿Se detecta? | `HZ-007` informa de la fila cuando el `偏差` escrito no contiene el `工艺参数` leído a través de su `引导词` en ninguno de los dos órdenes; los espacios y los separadores habituales (por ejemplo `+`, `、`, `/`, `-`, `—`, `的`, `：`) no cuentan, así que 流量无, 流量 + 无 y 无流量 coinciden. Solo se ejecuta si están las tres columnas —si no, figura en `skipped`— y un hallazgo suele indicar un copiado y pegado, no que la desviación sea técnicamente inválida. |
+| La columna `风险等级` está rellena con «中», pero no hemos configurado ningún nivel de riesgo. ¿Qué devuelve? | `HZ-005` se informa a sí misma en `skipped`, no como un aprobado: la norma no fija escala de niveles de riesgo, así que los niveles deben venir de los criterios de riesgo de su organización y la lista de origen está vacía. Una vez configurados, solo comprueba que el valor figure en la lista, no si la calificación es correcta, y su severidad está topada en `info`. |
+| La hoja no tiene ninguna línea que nombre la unidad analizada. ¿Es una falta? | `HZ-006` lo informa una vez, en el nivel superior: sin objeto de análisis, las conclusiones no se pueden remontar al límite que se analizó. La lista de cabecera en que se apoya procede de un anexo informativo —una sugerencia, no una obligación—, por eso la regla se queda en `warn` y `requireHeader: false` la desactiva para hojas que legítimamente no la llevan. |
+
+## Normas que sigue
+
+| Documento | Número | Reglas que lo citan |
+|---|---|---|
+| 《危险与可操作性分析（HAZOP分析）应用指南》 | GB/T 35320-2017 | HZ-001, HZ-002, HZ-003, HZ-004, HZ-005, HZ-006, HZ-007 |
+| 《风险管理 风险评估技术》 | GB/T 27921-2023 | HZ-005 |
 
 **Boundary:** this plugin checks one **HAZOP worksheet** for what a sheet can be held to — that every row
 records the analysis content your template requires, that each 偏差 actually follows from the 工艺参数 and
