@@ -55,8 +55,7 @@ correct. **Those four judgements are the study team's, and they are where HAZOP'
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./*.tgz
+dsh plugin --profile <name> add dsh-hazplan-check
 dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
 ```
 

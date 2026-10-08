@@ -66,8 +66,7 @@ in Chinese or English — applies a versioned rule pack, and returns a report.
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./dsh-hazplan-check-0.1.0.tgz
+dsh plugin --profile <name> add dsh-hazplan-check
 dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
 ```
 
