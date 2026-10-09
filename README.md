@@ -1,6 +1,14 @@
 # dsh-hazplan-check — HAZOP worksheet element completeness and deviation derivation consistency check
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-hazplan-check` reads one HAZOP worksheet — rows keyed by the sheet's own column names, in Chinese or English, plus an optional header naming the 分析对象 — and checks that same sheet's completeness and internal traceability: that every row fills the fields your template requires (`偏差` and `原因` by default), that each row records its `节点`, that `引导词` come from the standard's tables 1 and 2 or from the list the study declared beforehand, that each row shows which element its deviation came from, that `风险等级` come from your own risk vocabulary, that the sheet names its analysis subject, and that every `偏差` is literally the `工艺参数` read through its `引导词`; a check that cannot run for want of a column is reported in `skipped` rather than passing silently.
+
+## What it looks like
+
+![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-demo.png)
+
+Real output from this plugin over its own `HZ-004` test fixture — not a mock-up. The rule pack ships no invented quotations, so a finding names both the clause it applied and the fact that the clause text was not obtained.
 
 ## What it answers
 

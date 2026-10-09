@@ -1,6 +1,14 @@
 # dsh-hazplan-check — Verificación de la completitud de los elementos de una hoja de trabajo HAZOP y de la coherencia en la derivación de las desviaciones
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-hazplan-check` lee una hoja de trabajo HAZOP —filas organizadas según los propios nombres de columna de la hoja, en chino o en inglés, más una cabecera opcional que declara el 分析对象— y comprueba la completitud y la trazabilidad interna de esa misma hoja: que cada fila rellene las columnas que exige su plantilla (`偏差` y `原因` por defecto), que cada fila registre su `节点`, que los `引导词` procedan de las tablas 1 y 2 de la norma o de la lista que el estudio declaró de antemano, que cada fila deje ver de qué elemento proviene la desviación, que el `风险等级` salga del vocabulario de riesgo de su organización, que la hoja identifique el objeto de análisis y que cada `偏差` sea literalmente el `工艺参数` leído a través de su `引导词`; toda comprobación que no pueda ejecutarse por falta de una columna se informa en `skipped` en lugar de pasar en silencio.
+
+## Cómo se ve la salida
+
+![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-demo.png)
+
+Salida real de este plugin sobre su propio fixture de prueba `HZ-004` — no es un montaje. El paquete de reglas no inventa citas, así que cada hallazgo nombra la cláusula aplicada y advierte que su texto no se obtuvo.
 
 ## Qué responde
 
