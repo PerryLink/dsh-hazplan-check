@@ -1,6 +1,6 @@
 {
   "name": "dsh-hazplan-check",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "HAZOP 分析表要素齐备性与偏差推导一致性核对（依据公开的危险与可操作性分析标准，仅提示差异，不作出定性结论）",
   "type": "module",
   "main": "lib/index.mjs",
