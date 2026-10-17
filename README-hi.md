@@ -4,6 +4,13 @@
 
 `dsh-hazplan-check` एक HAZOP वर्कशीट पढ़ता है — शीट के अपने कॉलम नामों पर आधारित पंक्तियाँ (चीनी या अंग्रेज़ी नाम, दोनों चलते हैं), साथ में विश्लेषण-वस्तु बताने वाला वैकल्पिक हेडर — और उसी शीट की पूर्णता तथा आंतरिक अनुरेखणीयता की जाँच करता है: क्या हर पंक्ति अपने टेम्पलेट में माँगे गए कॉलम भरती है (डिफ़ॉल्ट रूप से `偏差` और `原因`), क्या हर पंक्ति में `节点` दर्ज है, क्या `引导词` मानक की तालिका 1 और तालिका 2 से या अध्ययन द्वारा पहले घोषित सूची से लिए गए हैं, क्या हर पंक्ति से दिखता है कि विचलन किस तत्व से आया, क्या `风险等级` आपके संस्थान की जोखिम-शब्दावली से है, क्या शीट विश्लेषण-वस्तु को पहचानती है, और क्या हर `偏差` शब्दशः अपने `引导词` के माध्यम से पढ़ा गया `工艺参数` है; किसी कॉलम के अभाव में जो जाँच चल नहीं सकती, वह चुपचाप पास होने के बजाय `skipped` में दर्ज होती है।
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-hazplan-check
+dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
+```
+
 ## आउटपुट कैसा दिखता है
 
 ![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-hero.png)
@@ -81,13 +88,6 @@ correct. **Those four judgements are the study team's, and they are where HAZOP'
 ## What it does
 
 नियम-सूची, फ़ील्ड और विस्तृत व्यवहार [README.md](README.md#what-it-does) (अंग्रेज़ी मुख्य संस्करण) में हैं। यह प्लगइन केवल उद्धृत धाराओं के सामने शाब्दिक अंतर सूचीबद्ध करता है और हर न चल पाई जाँच को `skipped` में बताता है।
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-hazplan-check
-dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
-```
 
 ## Configuration
 

@@ -4,6 +4,13 @@
 
 `dsh-hazplan-check` lee una hoja de trabajo HAZOP —filas organizadas según los propios nombres de columna de la hoja, en chino o en inglés, más una cabecera opcional que declara el 分析对象— y comprueba la completitud y la trazabilidad interna de esa misma hoja: que cada fila rellene las columnas que exige su plantilla (`偏差` y `原因` por defecto), que cada fila registre su `节点`, que los `引导词` procedan de las tablas 1 y 2 de la norma o de la lista que el estudio declaró de antemano, que cada fila deje ver de qué elemento proviene la desviación, que el `风险等级` salga del vocabulario de riesgo de su organización, que la hoja identifique el objeto de análisis y que cada `偏差` sea literalmente el `工艺参数` leído a través de su `引导词`; toda comprobación que no pueda ejecutarse por falta de una columna se informa en `skipped` en lugar de pasar en silencio.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-hazplan-check
+dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
+```
+
 ## Cómo se ve la salida
 
 ![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-hero.png)
@@ -81,13 +88,6 @@ correct. **Those four judgements are the study team's, and they are where HAZOP'
 ## What it does
 
 La tabla de reglas, los campos y el comportamiento detallado están en [README.md](README.md#what-it-does) (versión principal en inglés). El plugin sólo enumera divergencias literales frente a las cláusulas citadas e indica en `skipped` cada comprobación que no pudo ejecutarse.
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-hazplan-check
-dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
-```
 
 ## Configuration
 

@@ -4,6 +4,13 @@
 
 `dsh-hazplan-check` 读取一份 HAZOP 分析表——按表格自身的列名组织的行（中英文列名均可），加上可选的、写明分析对象的表头——核对这份表格自身的齐备与可追溯：每行是否填了模板要求的栏目（默认 `偏差` 与 `原因`）、每行是否写明 `节点`、`引导词` 是否取自标准表1与表2或本分析事先声明的清单、每行是否看得出偏差来自哪个要素、`风险等级` 是否出自本机构的风险档位、表头能否识别分析对象、以及每个 `偏差` 是否字面上等于 `工艺参数` 与 `引导词` 的组合；因缺列而无法执行的核对会出现在 `skipped` 里，而不是静默通过。
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-hazplan-check
+dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
+```
+
 ## 实际输出长什么样
 
 ![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-hero.png)
@@ -81,13 +88,6 @@ correct. **Those four judgements are the study team's, and they are where HAZOP'
 ## What it does
 
 规则表、字段说明与行为细节见 [README.md](README.md#what-it-does)（英文主版本）。本插件只列出材料与所引条款之间的字面差异，并对无法执行的检查在 `skipped` 中逐项说明。
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-hazplan-check
-dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
-```
 
 ## Configuration
 
