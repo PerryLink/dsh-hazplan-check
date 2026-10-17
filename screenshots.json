@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-hazplan-check-hero.png",
+    "kind": "hero",
+    "alt": "dsh-hazplan-check terminal output",
+    "caption": "Real dsh-hazplan-check checker output; 33 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-hazplan-check-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-hazplan-check terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]

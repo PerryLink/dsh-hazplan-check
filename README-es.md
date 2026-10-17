@@ -6,7 +6,9 @@
 
 ## Cómo se ve la salida
 
-![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-demo.png)
+![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-hero.png)
+
+![Animated terminal demo of dsh-hazplan-check](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-demo.gif)
 
 Salida real de este plugin sobre su propio fixture de prueba `HZ-004` — no es un montaje. El paquete de reglas no inventa citas, así que cada hallazgo nombra la cláusula aplicada y advierte que su texto no se obtuvo.
 

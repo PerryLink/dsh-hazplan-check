@@ -6,7 +6,9 @@
 
 ## What it looks like
 
-![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-demo.png)
+![Terminal demo of dsh-hazplan-check: real output over its HZ-004 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-hero.png)
+
+![Animated terminal demo of dsh-hazplan-check](https://raw.githubusercontent.com/PerryLink/dsh-hazplan-check/main/docs/assets/dsh-hazplan-check-demo.gif)
 
 Real output from this plugin over its own `HZ-004` test fixture — not a mock-up. The rule pack ships no invented quotations, so a finding names both the clause it applied and the fact that the clause text was not obtained.
 
