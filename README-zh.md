@@ -39,12 +39,7 @@ dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
 | 《危险与可操作性分析（HAZOP分析）应用指南》 | GB/T 35320-2017 | HZ-001, HZ-002, HZ-003, HZ-004, HZ-005, HZ-006, HZ-007 |
 | 《风险管理 风险评估技术》 | GB/T 27921-2023 | HZ-005 |
 
-**Boundary:** this plugin checks one **HAZOP worksheet** for what a sheet can be held to — that every row
-records the analysis content your template requires, that each 偏差 actually follows from the 工艺参数 and
-引导词 beside it, that risk levels come from your own vocabulary, that every node has rows, and that
-recommendations carry their closure fields. It does **not** judge whether the causes are complete, whether
-the consequences are analysed far enough, whether the safeguards are adequate, or whether a risk rating is
-correct. **Those four judgements are the study team's, and they are where HAZOP's value lies.**
+**边界（中文译文，以英文原文为准）：** 本插件核对一份 **HAZOP 工作表**，范围限于表格可以要求到的内容——每行是否记录了模板要求的分析内容，每个偏差是否确实由其旁的工艺参数与引导词推出，风险等级是否取自你自己的取值口径，每个节点是否有对应行，以及建议措施是否填写其闭环字段。它**不**判定原因是否完整、后果分析是否充分、现有安全措施是否足够，也不判定风险评级是否正确。**这四项判断属于分析小组，也正是 HAZOP 的价值所在。**
 
 > ### ⚠️ Nothing here is `error`, and the clause wording is why
 >
