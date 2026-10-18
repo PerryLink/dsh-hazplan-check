@@ -41,37 +41,21 @@ dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份 **HAZOP 工作表**，范围限于表格可以要求到的内容——每行是否记录了模板要求的分析内容，每个偏差是否确实由其旁的工艺参数与引导词推出，风险等级是否取自你自己的取值口径，每个节点是否有对应行，以及建议措施是否填写其闭环字段。它**不**判定原因是否完整、后果分析是否充分、现有安全措施是否足够，也不判定风险评级是否正确。**这四项判断属于分析小组，也正是 HAZOP 的价值所在。**
 
-> ### ⚠️ Nothing here is `error`, and the clause wording is why
+> ### ⚠️ 这里没有任何 `error`，原因在条款措辞（以英文原文为准）
 >
-> **GB/T 35320-2017《危险与可操作性分析（HAZOP分析）应用指南》** is in force (published and effective
-> 2017-12-29, identical to IEC 61882:2001), and its clause text was obtained verbatim.
+> **GB/T 35320-2017《危险与可操作性分析（HAZOP分析）应用指南》** 是现行标准（2017-12-29 发布并实施，与 IEC 61882:2001 等同），其条款原文已逐字取得。
 >
-> **The standard is a *recommended* one (the number carries "/T"), and every clause this pack cites uses
-> 宜 — "should" — not 应.** That applies to the two clauses an earlier version of this pack rated as
-> `error`: **6.6.4** reads 「每一个危险和可操作性性问题都**宜**作为单项记录」 and **6.6.3** opens
-> 「HAZOP 分析输出**宜**包括：」. **A recommendation cannot support an error rating**, so both rules are
-> now `warn` and **this plugin reports no error at all** — consistent with how the family treats every
-> other recommended standard. A test pins this so a later edit cannot quietly re-escalate one.
+> **该标准是*推荐性*标准（标准号带“/T”），本规则库引用的每一条条款用的都是“宜”——“should”——而不是“应”。** 这一点适用于本规则库早期版本评为 `error` 的那两条条款：**6.6.4** 写的是「每一个危险和可操作性性问题都**宜**作为单项记录」，**6.6.3** 开头是「HAZOP 分析输出**宜**包括：」。**推荐性要求不能支撑错误评级**，因此这两条规则现在都是 `warn`，**本插件根本不报告任何错误**——这与本系列插件对待其他每一部推荐性标准的方式一致。有测试固定这一点，使日后的修改无法悄悄把其中一条重新升级。
 >
-> **Everything else is capped at `warn` or `info`, for three reasons the pack records:**
+> **其余一切都封顶在 `warn` 或 `info`，理由有三条，规则库均有记录：**
 >
-> 1. **Appendix A.2 — the one place a column list appears — is a 资料性附录.** Its wording is "表列的标题
->    **可为**以下各项", it adds "**也可记录**其他信息", and it says outright that "工作表的版面设计**各有不同**".
->    **There is no mandatory column list**, so a missing column can only ever be a suggestion.
-> 2. **Clause 4.2 gives no criterion for node granularity.** It says the size of a node "取决于系统的
->    复杂性和危险的严重程度" and nothing quantitative follows. This plugin **does not** judge node size.
-> 3. **The standard fixes no risk-level scale.** 6.5 mentions a risk matrix as useful and defers the method
->    to IEC 60300-3-9; GB/T 27921-2023's matrix description is likewise informative. Levels must come from
->    your own risk criteria, so the vocabulary ships **empty**.
+> 1. **附录 A.2——唯一出现栏目清单的地方——是资料性附录。** 其措辞是“表列的标题**可为**以下各项”，还补充“**也可记录**其他信息”，并直说“工作表的版面设计**各有不同**”。**不存在强制性的栏目清单**，因此缺少某一栏最多只能算建议。
+> 2. **第 4.2 条没有给出节点划分粒度的准则。** 它说节点的大小“取决于系统的复杂性和危险的严重程度”，其后没有任何量化规定。本插件**不**判断节点大小。
+> 3. **标准没有规定风险等级刻度。** 6.5 提到风险矩阵有用，并把方法交由 IEC 60300-3-9；GB/T 27921-2023 对矩阵的描述同样属资料性。等级必须来自你自己的风险准则，因此词表出厂为**空**。
 >
-> Two further honesty notes are in the pack. The guide-word vocabulary uses the standard's own wording —
-> **「相反」, not the colloquial "相逆"** — and combines table 1 with table 2; a custom guide word is
-> **not** non-compliant, because 6.4.3 permits one "只要在分析开始前进行了定义". And **SH/T 3240-2025**
-> (the petrochemical HAZOP specification, in force 2025-11-01) had only its identity, status and glossary
-> verified — **its clause text was not obtained, so this pack cites none of it**.
+> 规则库中还有两条关于诚实性的说明。引导词词表采用标准自己的措辞——**「相反」，而不是俗写的“相逆”**——并合并表 1 与表 2；自定义引导词**并不**不合规，因为 6.4.3 允许自定义，条件是“只要在分析开始前进行了定义”。另外，**SH/T 3240-2025**（石油化工 HAZOP 规范，2025-11-01 实施）只核实了其名称、状态和术语表——**其条款原文本次未取得，因此本规则库不引用其中任何内容**。
 >
-> The four judgements this plugin does not make: whether the causes are complete, whether the consequences
-> are analysed far enough, whether the safeguards are adequate, whether a risk rating is correct.
+> 本插件不作的四项判断：原因是否完整、后果分析是否深入充分、现有安全措施是否充分、风险评级是否正确。
 
 ## Compatibility
 
