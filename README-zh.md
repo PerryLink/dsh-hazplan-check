@@ -30,6 +30,34 @@ dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
 
+#### 详细输出
+
+**工具** `hazplan_check`
+
+**输入**
+
+~~~json
+{"rows":[{"节点":"进料单元","工艺参数":"流量","引导词":"无","偏差":"无流量","原因":""}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-hazplan-check.HZ-001.de09b5a6",
+  "ruleId": "HZ-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1
+  },
+  "found": "第 1 行缺少 原因",
+  "expected": "每一个危险和可操作性问题都应作为单项记录，并与其原因一起记录；本机构配置的必填项为 偏差、原因",
+  "fix": "补齐栏目；本条只核对是否填写，不判断该问题是否找全"
+}
+~~~
+
+*来源 `tests/fixtures/HZ-001/HZ-001-unsafe.json (cases.json expects HZ-001 count 1); run via lib/index.mjs rules/hazplan-check.yaml`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | 某行填了偏差，但原因栏空着，会被报出吗？ | 会。`HZ-001` 要求每行填写必填栏目；出厂未配置 `requiredFields` 时，回退到条款本身点名的一对：`偏差` 与 `原因`，所以 `原因` 空着本身就是缺项。它只核对栏目是否填写，不判断问题是否找全、原因是否成立。 |

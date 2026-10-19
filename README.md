@@ -28,6 +28,34 @@ dsh --profile <name> --dump-config | grep 'dsh-hazplan-check'
 
 The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
+#### Detailed output
+
+**Tool** `hazplan_check`
+
+**Input**
+
+~~~json
+{"rows":[{"节点":"进料单元","工艺参数":"流量","引导词":"无","偏差":"无流量","原因":""}]}
+~~~
+ 
+**Output**
+
+~~~json
+{
+  "id": "dsh-hazplan-check.HZ-001.de09b5a6",
+  "ruleId": "HZ-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1
+  },
+  "found": "第 1 行缺少 原因",
+  "expected": "每一个危险和可操作性问题都应作为单项记录，并与其原因一起记录；本机构配置的必填项为 偏差、原因",
+  "fix": "补齐栏目；本条只核对是否填写，不判断该问题是否找全"
+}
+~~~
+
+*Observed from `tests/fixtures/HZ-001/HZ-001-unsafe.json (cases.json expects HZ-001 count 1); run via lib/index.mjs rules/hazplan-check.yaml`*
+
 | You ask | What it answers |
 |---|---|
 | A row records the deviation but leaves the cause blank. Is that reported? | Yes. `HZ-001` requires the fields every row must fill; shipped unset, it falls back to the pair the clause itself names, `偏差` and `原因`, so a blank `原因` is a gap on its own. It checks that the column is filled, not that the problem list is complete or the cause technically sound. |

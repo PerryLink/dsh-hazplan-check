@@ -35,6 +35,34 @@ Salida real de este plugin sobre su propio fixture de prueba `HZ-004` — no es 
 La tabla siguiente es el conjunto de ejemplos: la primera fila es el caso detallado y las demás son casos breves.
 
 
+#### Salida detallada
+
+**Herramienta** `hazplan_check`
+
+**Entrada**
+
+~~~json
+{"rows":[{"节点":"进料单元","工艺参数":"流量","引导词":"无","偏差":"无流量","原因":""}]}
+~~~
+ 
+**Salida**
+
+~~~json
+{
+  "id": "dsh-hazplan-check.HZ-001.de09b5a6",
+  "ruleId": "HZ-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1
+  },
+  "found": "第 1 行缺少 原因",
+  "expected": "每一个危险和可操作性问题都应作为单项记录，并与其原因一起记录；本机构配置的必填项为 偏差、原因",
+  "fix": "补齐栏目；本条只核对是否填写，不判断该问题是否找全"
+}
+~~~
+
+*Observado en `tests/fixtures/HZ-001/HZ-001-unsafe.json (cases.json expects HZ-001 count 1); run via lib/index.mjs rules/hazplan-check.yaml`*
+
 | Usted pregunta | Qué responde |
 |---|---|
 | Una fila registra la desviación pero deja vacía la causa. ¿Se informa de ello? | Sí. `HZ-001` exige los campos que debe rellenar cada fila; sin configurar, recurre al par que la propia cláusula nombra, `偏差` y `原因`, de modo que un `原因` vacío ya es una falta por sí solo. Comprueba que la columna esté rellena, no que la lista de problemas esté completa ni que la causa sea técnicamente válida. |
