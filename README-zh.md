@@ -3,6 +3,7 @@
 [English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-hazplan-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-hazplan-check?ref=badge)
 
 `dsh-hazplan-check` 读取一份 HAZOP 分析表——按表格自身的列名组织的行（中英文列名均可），加上可选的、写明分析对象的表头——核对这份表格自身的齐备与可追溯：每行是否填了模板要求的栏目（默认 `偏差` 与 `原因`）、每行是否写明 `节点`、`引导词` 是否取自标准表1与表2或本分析事先声明的清单、每行是否看得出偏差来自哪个要素、`风险等级` 是否出自本机构的风险档位、表头能否识别分析对象、以及每个 `偏差` 是否字面上等于 `工艺参数` 与 `引导词` 的组合；因缺列而无法执行的核对会出现在 `skipped` 里，而不是静默通过。
 

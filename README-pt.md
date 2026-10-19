@@ -8,6 +8,7 @@ dsh plugin --profile <name> add dsh-hazplan-check
 
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-hazplan-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-hazplan-check?ref=badge)
 
 `dsh-hazplan-check` lê uma folha de trabalho HAZOP —linhas organizadas pelos próprios nomes de coluna da folha, em chinês ou em inglês, mais um cabeçalho opcional que declara o 分析对象— e verifica a completude e a rastreabilidade interna dessa mesma folha: se cada linha preenche as colunas exigidas pelo seu modelo (`偏差` e `原因` por omissão), se cada linha regista o seu `节点`, se os `引导词` vêm das tabelas 1 e 2 da norma ou da lista que o estudo declarou antecipadamente, se cada linha deixa ver de que elemento veio o desvio, se o `风险等级` sai do vocabulário de risco da sua organização, se a folha identifica o objeto de análise e se cada `偏差` é literalmente o `工艺参数` lido através do seu `引导词`; qualquer verificação que não possa correr por falta de uma coluna é reportada em `skipped` em vez de passar em silêncio.
 
