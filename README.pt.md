@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-flow-dark.svg">
-  <img src="docs/assets/dsh-hazplan-check-flow-light.svg" width="100%" alt="Fluxo do dsh-hazplan-check: folha de trabalho HAZOP → leitura → pacote de regras HZ-001…HZ-007 → verificação → relatório; as verificações que não podem correr aparecem em skipped">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-hazplan-check-hero-en-light.webp" width="100%" alt="Banner do dsh-hazplan-check: à esquerda, o nome do plugin, duas linhas de valor e o rodapé; à direita, duas linhas de exemplo de uma folha HAZOP — a linha 1 deixa a causa vazia (HZ-001), a linha 2 combina o parâmetro caudal com a palavra-guia nenhum mas escreve um desvio de nível (HZ-007); o cabeçalho declara o objeto (HZ-006); abaixo, o desvio aparece como parâmetro mais palavra-guia e os dois canais issues[] e skipped[], com a nota de que uma lista de diferenças vazia não é uma aprovação">
 </picture>
 
 # dsh-hazplan-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-hazplan-check
 `dsh-hazplan-check` lê uma folha de trabalho HAZOP — linhas organizadas pelos próprios nomes de coluna da folha (em chinês ou em inglês), mais um cabeçalho opcional que declara o objeto de análise — e verifica essa mesma folha: se cada linha preenche os campos exigidos pelo seu modelo (desvio e causa por omissão), se cada linha registra o seu nó, se as palavras-guia vêm das tabelas 1 e 2 da norma ou da lista que o estudo declarou de antemão, se cada linha deixa ver de que elemento veio o desvio, se o nível de risco vem do vocabulário de risco da sua organização, se a folha identifica o objeto de análise e se cada desvio contém literalmente o parâmetro lido através da sua palavra-guia. Toda a verificação que não possa correr por falta de uma coluna é reportada em `skipped` em vez de passar em silêncio.
 
 Registra uma única ferramenta `hazplan_check`. O núcleo de verificação é uma função pura: sem rede, sem chamadas ao modelo, sem escrita de ficheiros; a folha de trabalho é só de leitura.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hazplan-check-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-hazplan-check: o material é lido como WorksheetInput por parseMaterial(); três linhas de exemplo cruzam seis regras de linha numa matriz de resultados (× diferença vai para issues[], √ executada sem diferença também vai para skipped[], – não executada vai para skipped[]); o subject do cabeçalho é verificado à parte por HZ-006; HZ-007 exige que o desvio seja parâmetro mais palavra-guia; os dois canais alimentam a projeção de buildView()">
+</picture>
 
 ## Instalação em três passos
 

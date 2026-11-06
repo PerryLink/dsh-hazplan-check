@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-flow-dark.svg">
-  <img src="docs/assets/dsh-hazplan-check-flow-light.svg" width="100%" alt="dsh-hazplan-check 数据流：HAZOP 工作表 → 读取（中英文列名）→ 规则包 HZ-001…HZ-007 → 核对 → 报告；因缺列无法执行的核对进入 skipped">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-hazplan-check-hero-zh-light.webp" width="100%" alt="dsh-hazplan-check 配图：左列是插件名、两行价值句与页脚；右侧是一份 HAZOP 工作表的两行样例——第 1 行的原因为空（HZ-001），第 2 行工艺参数为流量、引导词为无，偏差却写成「液位高」（HZ-007）；表头已声明 subject（HZ-006）；下方是偏差等于工艺参数与引导词组合的推导，以及 issues[]、skipped[] 两条输出通道，并注明空 issues 不等于通过">
 </picture>
 
 # dsh-hazplan-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-hazplan-check
 `dsh-hazplan-check` 读取一份 HAZOP 分析表——行按表格自身的列名组织（中英文列名都认），表头可选地写明分析对象——核对的是这份表格自身：每行是否填了模板要求的栏目（默认 `偏差` 与 `原因`）、每行是否写明 `节点`、`引导词` 是否取自标准表1与表2或本次分析事先声明的清单、每行是否看得出偏差来自哪个要素、`风险等级` 是否出自本机构的风险档位、表头能否识别分析对象，以及每个 `偏差` 是否字面上包含 `工艺参数` 经 `引导词` 读出的组合。因缺列而无法执行的核对会进入 `skipped`，不会静默通过。
 
 它注册一个 `hazplan_check` 工具，核对核心是纯函数：不联网、不调用模型、不写文件；传入的工作表只读。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hazplan-check-flow-v5-light.svg" width="100%" alt="dsh-hazplan-check 结构图：材料经 parseMaterial() 读成 WorksheetInput；三行示例表在核对矩阵里逐行对上六条行级规则（× 差异进 issues[]、√ 已执行无差异也进 skipped[]、– 未执行进 skipped[]），表头 subject 由 HZ-006 单独核对；HZ-007 要求偏差等于工艺参数与引导词的组合；两条通道汇入 buildView() 的投影">
+</picture>
 
 ## 三步上手
 

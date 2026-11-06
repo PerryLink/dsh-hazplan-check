@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-flow-dark.svg">
-  <img src="docs/assets/dsh-hazplan-check-flow-light.svg" width="100%" alt="dsh-hazplan-check flow: HAZOP worksheet → parse → rule pack HZ-001…HZ-007 → check → report; checks that cannot run land in skipped">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-hazplan-check-hero-en-light.webp" width="100%" alt="dsh-hazplan-check banner: left, the plugin name, two value lines and the footer; right, two sample rows of a HAZOP worksheet — row 1 leaves the cause empty (HZ-001), row 2 pairs parameter flow with guide word none but writes a level deviation (HZ-007); the header declares its subject (HZ-006); below, the deviation is shown as parameter plus guide word, and the issues[] and skipped[] channels, noting that an empty issue list is not a pass">
 </picture>
 
 # dsh-hazplan-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-hazplan-check
 `dsh-hazplan-check` reads one HAZOP worksheet — rows keyed by the sheet's own column names (Chinese or English), plus an optional header naming the analysis subject — and checks that same sheet: whether every row fills the fields your template requires (deviation and cause by default), whether each row records its node, whether guide words come from the standard's tables 1 and 2 or from the list the study declared beforehand, whether each row shows which element its deviation came from, whether risk levels come from your own risk vocabulary, whether the sheet names its analysis subject, and whether every deviation literally contains the parameter read through its guide word. A check that cannot run for want of a column is reported in `skipped` rather than passing silently.
 
 It registers one `hazplan_check` tool. The check core is a pure function: no network, no model call, no file writes; the worksheet is read-only.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hazplan-check-flow-v5-light.svg" width="100%" alt="dsh-hazplan-check structure: the material is read into a WorksheetInput by parseMaterial(); three sample rows meet six row-level rules in a scorecard grid (× difference goes to issues[], √ executed with no difference also goes to skipped[], – not executed goes to skipped[]); the header subject is checked separately by HZ-006; HZ-007 requires the deviation to equal parameter plus guide word; both channels feed the buildView() projection">
+</picture>
 
 ## Three-step setup
 

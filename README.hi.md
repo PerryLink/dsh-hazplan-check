@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-flow-dark.svg">
-  <img src="docs/assets/dsh-hazplan-check-flow-light.svg" width="100%" alt="dsh-hazplan-check प्रवाह: HAZOP वर्कशीट → पाठन → नियम-पैक HZ-001…HZ-007 → जाँच → रिपोर्ट; जो जाँचें नहीं चल सकतीं वे skipped में जाती हैं">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-hazplan-check-hero-en-light.webp" width="100%" alt="dsh-hazplan-check बैनर: बाईं ओर प्लगइन का नाम, मूल्य की दो पंक्तियाँ और फ़ुटर; दाईं ओर HAZOP वर्कशीट की दो नमूना पंक्तियाँ — पंक्ति 1 में कारण खाली है (HZ-001), पंक्ति 2 में पैरामीटर प्रवाह और गाइड वर्ड कोई है पर विचलन स्तर लिखा गया है (HZ-007); शीर्षक विषय घोषित करता है (HZ-006); नीचे विचलन = पैरामीटर + गाइड वर्ड और issues[] तथा skipped[] के दो चैनल, साथ में यह नोट कि खाली issues का अर्थ उत्तीर्ण नहीं है">
 </picture>
 
 # dsh-hazplan-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-hazplan-check
 `dsh-hazplan-check` एक HAZOP वर्कशीट पढ़ता है — पंक्तियाँ शीट के अपने कॉलम-नामों के अनुसार (चीनी या अंग्रेज़ी), साथ में विश्लेषण-वस्तु बताने वाला वैकल्पिक हेडर — और उसी शीट की जाँच करता है: क्या हर पंक्ति टेम्पलेट के अनिवार्य कॉलम भरती है (डिफ़ॉल्ट में `偏差` और `原因`), क्या हर पंक्ति अपना `节点` दर्ज करती है, क्या `引导词` मानक की तालिका 1 व 2 से या अध्ययन द्वारा पहले घोषित सूची से आते हैं, क्या हर पंक्ति से दिखता है कि विचलन किस तत्व से आया, क्या `风险等级` आपके संस्थान की जोखिम-श्रेणियों से है, क्या शीट विश्लेषण-वस्तु बताती है, और क्या हर `偏差` में शाब्दिक रूप से `工艺参数` का उसके `引导词` के माध्यम से पढ़ा गया रूप है। जो जाँच किसी कॉलम के अभाव में नहीं चल सकती, वह `skipped` में दर्ज होती है, चुपचाप पास नहीं होती।
 
 यह एक `hazplan_check` उपकरण पंजीकृत करता है। जाँच का मूल एक शुद्ध फ़ंक्शन है: कोई नेटवर्क नहीं, कोई मॉडल कॉल नहीं, कोई फ़ाइल लेखन नहीं; वर्कशीट केवल पढ़ी जाती है।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hazplan-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hazplan-check-flow-v5-light.svg" width="100%" alt="dsh-hazplan-check संरचना: सामग्री parseMaterial() से WorksheetInput में पढ़ी जाती है; तीन नमूना पंक्तियाँ परिणाम-मैट्रिक्स में छह पंक्ति-स्तरीय नियमों से मिलती हैं (× अंतर issues[] में जाता है, √ चली पर बिना अंतर भी skipped[] में जाती है, – नहीं चली skipped[] में जाती है); शीर्षक subject की जाँच HZ-006 अलग से करता है; HZ-007 चाहता है कि विचलन = पैरामीटर + गाइड वर्ड; दोनों चैनल buildView() के प्रोजेक्शन में मिलते हैं">
+</picture>
 
 ## तीन चरणों में शुरुआत
 
