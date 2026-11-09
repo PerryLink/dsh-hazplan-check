@@ -1,20 +1,35 @@
 {
   "schemaVersion": 1,
-  "tier": "L1-lite",
+  "tier": "L1+ingest",
   "input_formats": [
     "json",
-    "yaml"
+    "yaml",
+    "docx",
+    "xlsx",
+    "xlsm",
+    "csv",
+    "tsv"
   ],
   "outputs": [
     "markdown",
     "json"
   ],
   "rules": {
-    "total": 7
+    "total": 7,
+    "executed": 6,
+    "skipped": 1,
+    "manual": 0,
+    "unsupported": 0
   },
   "limits": [
-    "HAZOP 表的嵌套 JSON/YAML；尚无文档适配器",
-    "无真实语料/P/R；benchmark 未测",
-    "不做定性/合规结论"
-  ]
+    "文档入口需要另装 dsh-table-ingest；分析对象/版本可用 subject/revision 参数补",
+    "1 条规则因缺少可选字段而跳过；跳过不等于通过",
+    "不判断 HAZOP 分析是否充分，只核对节点/偏差/措施等要素"
+  ],
+  "benchmark": {
+    "kind": "quickstart-sample",
+    "corpus_size": 1,
+    "note": "one HAZOP CSV row through dsh-table-ingest; 6/7 rules run, 1 skips on an absent optional field; not a real-world P/R",
+    "measured_at": "2026-11-09"
+  }
 }
