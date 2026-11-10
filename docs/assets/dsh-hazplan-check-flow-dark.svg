@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-label="dsh-hazplan-check flow">
+<title>dsh-hazplan-check flow</title>
+<rect width="1200" height="400" rx="18" fill="#0d1117"/>
+<text x="60" y="62" fill="#f0f6fc" font-family="ui-sans-serif,system-ui,sans-serif" font-size="30" font-weight="700">dsh-hazplan-check</text>
+<text x="60" y="94" fill="#8b949e" font-family="ui-monospace,monospace" font-size="16">HAZOP worksheet · rule pack · report</text>
+<line x1="60" y1="116" x2="1140" y2="116" stroke="#30363d"/>
+<rect x="60" y="150" width="180" height="96" rx="14" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+<text x="150" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" font-weight="700">worksheet</text>
+<text x="150" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">JSON · YAML</text>
+<path d="M246 198h33" stroke="#8b949e" stroke-width="3"/>
+<path d="M277 191l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="285" y="150" width="180" height="96" rx="14" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+<text x="375" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" font-weight="700">parse</text>
+<text x="375" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">zh / en columns</text>
+<path d="M471 198h33" stroke="#8b949e" stroke-width="3"/>
+<path d="M502 191l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="510" y="150" width="180" height="96" rx="14" fill="#161b22" stroke="#4B67B4" stroke-width="2"/>
+<text x="600" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" font-weight="700">rules</text>
+<text x="600" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">hazplan-check.yaml</text>
+<path d="M696 198h33" stroke="#8b949e" stroke-width="3"/>
+<path d="M727 191l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="735" y="150" width="180" height="96" rx="14" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+<text x="825" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" font-weight="700">check</text>
+<text x="825" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">warn · info</text>
+<path d="M921 198h33" stroke="#8b949e" stroke-width="3"/>
+<path d="M952 191l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="960" y="150" width="180" height="96" rx="14" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+<text x="1050" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" font-weight="700">hazplan_check</text>
+<text x="1050" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">issues + skipped</text>
+<path d="M825 246v44" stroke="#4B67B4" stroke-width="2" stroke-dasharray="5 5"/>
+<rect x="735" y="290" width="180" height="52" rx="12" fill="#161b22" stroke="#4B67B4" stroke-width="2"/>
+<text x="825" y="313" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" font-weight="700">skipped</text>
+<text x="825" y="332" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">missing column</text>
+<text x="60" y="380" fill="#8b949e" font-family="ui-monospace,monospace" font-size="13">reads: [file] · writes: [] · network: false · model: none</text>
+</svg>

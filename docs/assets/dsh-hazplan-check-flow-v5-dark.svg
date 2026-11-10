@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-label="dsh-hazplan-check 结构图：材料经 parseMaterial() 读成 WorksheetInput；三行示例表在核对矩阵里逐行对上六条行级规则（× 差异进 issues[]、√ 已执行无差异也进 skipped[]、– 未执行进 skipped[]），表头 subject 由 HZ-006 单独核对；HZ-007 要求偏差等于工艺参数与引导词的组合；两条通道汇入 buildView() 的投影">
+<title>dsh-hazplan-check 结构图：材料经 parseMaterial() 读成 WorksheetInput；三行示例表在核对矩阵里逐行对上六条行级规则（× 差异进 issues[]、√ 已执行无差异也进 skipped[]、– 未执行进 skipped[]），表头 subject 由 HZ-006 单独核对；HZ-007 要求偏差等于工艺参数与引导词的组合；两条通道汇入 buildView() 的投影</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#131a2a"/><stop offset="1" stop-color="#0c1016"/></linearGradient>
+<filter id="soft" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#000000" flood-opacity="0.45"/></filter>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8496f5"/></marker>
+</defs>
+<rect width="1100" height="660" rx="22" fill="url(#bg)"/>
+<text x="44" y="50" fill="#f0f3f9" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="16" font-weight="700">dsh-hazplan-check</text>
+<text x="218" y="50" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13">结构图 · 一张示例表的一次运行</text>
+<text x="1056" y="48" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="end">GB/T 35320-2017 · 表1 · 表2 · 附录 A.2</text>
+<text x="1056" y="68" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="end">0 error · 推荐性条款 → 严重级封顶 warn / info</text>
+<text x="44" y="72" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11.5">材料 → parseMaterial() → 七条规则 → issues[] / skipped[] → buildView()</text>
+<line x1="44" y1="88" x2="1056" y2="88" stroke="#2b3348" stroke-width="1"/>
+<rect x="44" y="100" width="196" height="424" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<rect x="60" y="112" width="4" height="14" rx="2" fill="#8496f5"/>
+<text x="72" y="124" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="700">材料</text>
+<text x="60" y="152" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12">JSON · YAML</text>
+<text x="60" y="172" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">subject · revision</text>
+<text x="60" y="192" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">rows[]</text>
+<text x="60" y="210" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">（file 或 material）</text>
+<line x1="60" y1="226" x2="224" y2="226" stroke="#2b3348" stroke-width="1" stroke-dasharray="4 5"/>
+<path d="M142 232 L142 248" fill="none" stroke="#8496f5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr)"/>
+<rect x="60" y="264" width="4" height="14" rx="2" fill="#8496f5"/>
+<text x="72" y="276" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="700">parseMaterial()</text>
+<text x="60" y="302" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">列名中英文都认</text>
+<text x="60" y="320" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">大小写 / 空格 / _ 归一</text>
+<text x="60" y="344" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">空表 · 无已知列</text>
+<text x="60" y="362" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">→ MaterialError</text>
+<line x1="60" y1="380" x2="224" y2="380" stroke="#2b3348" stroke-width="1" stroke-dasharray="4 5"/>
+<path d="M142 386 L142 402" fill="none" stroke="#8496f5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr)"/>
+<rect x="60" y="416" width="4" height="14" rx="2" fill="#8496f5"/>
+<text x="72" y="428" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="700">WorksheetInput</text>
+<text x="60" y="452" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">rows[N] · columns[]</text>
+<text x="60" y="470" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">subject? · warnings[]</text>
+<text x="60" y="492" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">缺 subject 只警告</text>
+<text x="60" y="510" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">不中断读取</text>
+<path d="M240 300 L257 300" fill="none" stroke="#8496f5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr)"/>
+<rect x="260" y="100" width="796" height="286" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="276" y="122" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="14" font-weight="700">核对矩阵 · 三行示例表</text>
+<text x="276" y="142" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">每个单元格 = 该行在该条规则下的结果（样例取自 tests/fixtures）</text>
+<rect x="922.0" y="110" width="118.0" height="22" rx="11.0" fill="#242d42"/>
+<text x="931.0" y="124.96" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" font-weight="700">3 warn · 4 skipped</text>
+<rect x="276" y="156" width="764" height="30" rx="9" fill="#202839"/>
+<text x="290" y="176" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">表头 · subject 已声明「某装置 HAZOP 分析」</text>
+<text x="1026" y="176" fill="#4bc46c" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" text-anchor="end" font-weight="700">HZ-006 √</text>
+<text x="276" y="210" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">样例行</text>
+<text x="454.0" y="204" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="middle" font-weight="700">HZ-001</text>
+<text x="454.0" y="221" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="middle">必填栏</text>
+<text x="560.0" y="204" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="middle" font-weight="700">HZ-002</text>
+<text x="560.0" y="221" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="middle">节点</text>
+<text x="666.0" y="204" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="middle" font-weight="700">HZ-003</text>
+<text x="666.0" y="221" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="middle">引导词表</text>
+<text x="772.0" y="204" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="middle" font-weight="700">HZ-004</text>
+<text x="772.0" y="221" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="middle">偏差/参数</text>
+<text x="878.0" y="204" fill="#7c8497" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="middle" font-weight="700">HZ-005</text>
+<text x="878.0" y="221" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="middle">风险档位</text>
+<text x="984.0" y="204" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" text-anchor="middle" font-weight="700">HZ-007</text>
+<text x="984.0" y="221" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="middle">偏差推导</text>
+<line x1="276" y1="228" x2="1040" y2="228" stroke="#2b3348" stroke-width="1"/>
+<text x="288" y="245" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">第 1 行</text>
+<text x="288" y="262" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">进料单元</text>
+<rect x="404" y="233" width="100" height="31" rx="8" fill="#2a2216" stroke="#7a5a24" stroke-width="1"/>
+<text x="416" y="254" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">×</text>
+<text x="430" y="253" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">缺原因</text>
+<rect x="510" y="233" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="560.0" y="254" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="616" y="233" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="666.0" y="254" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="722" y="233" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="772.0" y="254" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="828" y="233" width="100" height="31" rx="8" fill="#1e2534" stroke="#2b3348" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="840" y="254" fill="#7c8497" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">–</text>
+<text x="854" y="253" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">未配置</text>
+<rect x="934" y="233" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="984.0" y="254" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<line x1="276" y1="268" x2="1040" y2="268" stroke="#2b3348" stroke-width="1"/>
+<text x="288" y="285" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">第 2 行</text>
+<text x="288" y="302" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">进料单元</text>
+<rect x="404" y="273" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="454.0" y="294" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="510" y="273" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="560.0" y="294" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="616" y="273" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="666.0" y="294" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="722" y="273" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="772.0" y="294" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="828" y="273" width="100" height="31" rx="8" fill="#1e2534" stroke="#2b3348" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="840" y="294" fill="#7c8497" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">–</text>
+<text x="854" y="293" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">未配置</text>
+<rect x="934" y="273" width="100" height="31" rx="8" fill="#2a2216" stroke="#7a5a24" stroke-width="1"/>
+<text x="946" y="294" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">×</text>
+<text x="960" y="293" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">组合不符</text>
+<line x1="276" y1="308" x2="1040" y2="308" stroke="#2b3348" stroke-width="1"/>
+<text x="288" y="325" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">第 3 行</text>
+<text x="288" y="342" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">（无节点）</text>
+<rect x="404" y="313" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="454.0" y="334" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="510" y="313" width="100" height="31" rx="8" fill="#2a2216" stroke="#7a5a24" stroke-width="1"/>
+<text x="522" y="334" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">×</text>
+<text x="536" y="333" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">节点空</text>
+<rect x="616" y="313" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="666.0" y="334" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="722" y="313" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="772.0" y="334" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<rect x="828" y="313" width="100" height="31" rx="8" fill="#1e2534" stroke="#2b3348" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="840" y="334" fill="#7c8497" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">–</text>
+<text x="854" y="333" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">未配置</text>
+<rect x="934" y="313" width="100" height="31" rx="8" fill="#1e2534"/>
+<text x="984.0" y="334" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" text-anchor="middle" font-weight="700">√</text>
+<line x1="276" y1="348" x2="1040" y2="348" stroke="#2b3348" stroke-width="1"/>
+<text x="280" y="370" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" text-anchor="middle" font-weight="700">×</text>
+<text x="292" y="369" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">差异 → issues[]</text>
+<text x="430" y="370" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" text-anchor="middle" font-weight="700">√</text>
+<text x="442" y="369" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">已执行、无差异 → 进 skipped[]</text>
+<text x="650" y="370" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" text-anchor="middle" font-weight="700">–</text>
+<text x="662" y="369" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">未执行 → skipped[]（写明原因）</text>
+<rect x="260" y="402" width="340" height="122" rx="16" fill="#1b2231" stroke="#8496f5" stroke-width="1.4" stroke-dasharray="6 5"/>
+<text x="276" y="426" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="700">偏差 = 工艺参数 ⊕ 引导词</text>
+<rect x="512.0" y="414" width="72.0" height="22" rx="11.0" fill="#242d42"/>
+<text x="521.0" y="428.96" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">HZ-007 细节</text>
+<text x="276" y="444" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">工艺参数</text>
+<text x="362" y="444" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">引导词</text>
+<text x="428" y="444" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">应写</text>
+<rect x="276" y="452" width="64" height="30" rx="8" fill="#202839" stroke="#2b3348" stroke-width="1.4"/>
+<text x="308.0" y="472" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" text-anchor="middle" font-weight="700">流量</text>
+<text x="352" y="472" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" text-anchor="middle">⊕</text>
+<rect x="362" y="452" width="42" height="30" rx="8" fill="#202839" stroke="#2b3348" stroke-width="1.4"/>
+<text x="383.0" y="472" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" text-anchor="middle" font-weight="700">无</text>
+<text x="414" y="472" fill="#8496f5" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" text-anchor="middle">→</text>
+<rect x="428" y="452" width="72" height="30" rx="8" fill="#16281d" stroke="#2f6b41" stroke-width="1.4"/>
+<text x="464.0" y="472" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" text-anchor="middle" font-weight="700">无流量</text>
+<text x="276" y="500" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">表里写「液位高」≠ 流量⊕无 · 两种语序与连接符都归一</text>
+<text x="276" y="518" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">命中只提示可能的复制粘贴串行，不判该偏差在工艺上对错</text>
+<rect x="616" y="402" width="210" height="122" rx="16" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="632" y="426" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">issues[]</text>
+<text x="702" y="426" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">3 条</text>
+<text x="632" y="446" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">HZ-001</text>
+<text x="680" y="446" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">第 1 行</text>
+<text x="632" y="460" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">缺少 原因</text>
+<text x="632" y="475" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">HZ-002</text>
+<text x="680" y="475" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">第 3 行 · 节点</text>
+<text x="632" y="489" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">1 行未写节点（行 3）</text>
+<text x="632" y="504" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11" font-weight="700">HZ-007</text>
+<text x="680" y="504" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">第 2 行 · 偏差</text>
+<text x="632" y="518" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">「液位高」≠ 流量⊕无</text>
+<rect x="842" y="402" width="214" height="122" rx="16" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="858" y="426" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">skipped[]</text>
+<text x="932" y="426" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">4 条</text>
+<text x="858" y="446" fill="#f0f3f9" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">HZ-005 · riskLevels 未配置</text>
+<text x="858" y="466" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">标准未规定刻度 → 档位自定</text>
+<text x="858" y="486" fill="#a8b1c4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">HZ-003/004/006 已执行无差异</text>
+<text x="858" y="506" fill="#e0a44e" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">空 issues ≠ 全部通过</text>
+<rect x="260" y="540" width="796" height="52" rx="16" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="276" y="566" fill="#8496f5" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">buildView()</text>
+<text x="378" y="566" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">markdown · reportJson · summary{error,warn,info}</text>
+<text x="706" y="566" fill="#a8b1c4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">issueCount 3 / skippedCount 4</text>
+<text x="1040" y="566" fill="#4bc46c" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="end" font-weight="700">结论留给审核人</text>
+<text x="276" y="584" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">报告只列差异，不判合规、不认定责任；始终带免责声明</text>
+<path d="M723 386 L723 400" fill="none" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr)"/>
+<path d="M949 386 L949 400" fill="none" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr)"/>
+<path d="M723 524 L723 538" fill="none" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr)"/>
+<path d="M949 524 L949 538" fill="none" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr)"/>
+<text x="44" y="562" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">只读材料 · 不联网</text>
+<text x="44" y="582" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">不调用模型 · 原件不改</text>
+<line x1="44" y1="610" x2="1056" y2="610" stroke="#2b3348" stroke-width="1"/>
+<text x="44" y="628" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">PerryLink DSH plugin family · Apache-2.0 · 由 scripts/gen-readme-assets.py 生成</text>
+<text x="1056" y="628" fill="#7c8497" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="end">规则库即数据：rules/hazplan-check.yaml</text>
+</svg>
