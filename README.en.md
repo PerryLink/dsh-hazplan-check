@@ -45,6 +45,11 @@ It registers one `hazplan_check` tool. The check core is a pure function: no net
   <img src="docs/assets/dsh-hazplan-check-flow-v5-light.svg" width="100%" alt="dsh-hazplan-check structure: the material is read into a WorksheetInput by parseMaterial(); three sample rows meet six row-level rules in a scorecard grid (× difference goes to issues[], √ executed with no difference also goes to skipped[], – not executed goes to skipped[]); the header subject is checked separately by HZ-006; HZ-007 requires the deviation to equal parameter plus guide word; both channels feed the buildView() projection">
 </picture>
 
+![dsh-hazplan-check: real terminal run](docs/assets/dsh-hazplan-check-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
+
 ## Three-step setup
 
 1. **Install**:

@@ -45,6 +45,11 @@ Registra una única herramienta `hazplan_check`. El núcleo de verificación es 
   <img src="docs/assets/dsh-hazplan-check-flow-v5-light.svg" width="100%" alt="Estructura de dsh-hazplan-check: el material se lee como WorksheetInput mediante parseMaterial(); tres filas de ejemplo se cruzan con seis reglas de fila en una matriz de resultados (× diferencia va a issues[], √ ejecutada sin diferencia también va a skipped[], – no ejecutada va a skipped[]); la cabecera subject la comprueba HZ-006 aparte; HZ-007 exige que la desviación sea parámetro más palabra guía; ambos canales alimentan la proyección de buildView()">
 </picture>
 
+![dsh-hazplan-check: ejecución real de terminal](docs/assets/dsh-hazplan-check-demo.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 ## Instalación en tres pasos
 
 1. **Instalar**:

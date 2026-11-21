@@ -45,6 +45,11 @@ dsh plugin --profile <name> add dsh-hazplan-check
   <img src="docs/assets/dsh-hazplan-check-flow-v5-light.svg" width="100%" alt="dsh-hazplan-check संरचना: सामग्री parseMaterial() से WorksheetInput में पढ़ी जाती है; तीन नमूना पंक्तियाँ परिणाम-मैट्रिक्स में छह पंक्ति-स्तरीय नियमों से मिलती हैं (× अंतर issues[] में जाता है, √ चली पर बिना अंतर भी skipped[] में जाती है, – नहीं चली skipped[] में जाती है); शीर्षक subject की जाँच HZ-006 अलग से करता है; HZ-007 चाहता है कि विचलन = पैरामीटर + गाइड वर्ड; दोनों चैनल buildView() के प्रोजेक्शन में मिलते हैं">
 </picture>
 
+![dsh-hazplan-check का असली टर्मिनल रन](docs/assets/dsh-hazplan-check-demo.gif)
+
+*इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
+
+
 ## तीन चरणों में शुरुआत
 
 1. **इंस्टॉल करें**:
