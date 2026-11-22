@@ -11,6 +11,8 @@
 
 Una herramienta de verificación de hojas de trabajo para equipos de seguridad de procesos y HAZOP: lee una hoja, aplica un paquete de reglas versionado a su completitud y a la derivación de desviaciones, y solo enumera diferencias — nunca un veredicto de cumplimiento.
 
+Última verificación: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Instalar](#instalación-en-tres-pasos) · [Configuración](#configuración) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -48,7 +50,6 @@ Registra una única herramienta `hazplan_check`. El núcleo de verificación es 
 ![dsh-hazplan-check: ejecución real de terminal](docs/assets/dsh-hazplan-check-demo.gif)
 
 *Repetición animada de una ejecución real registrada en este repositorio.*
-
 
 ## Instalación en tres pasos
 
