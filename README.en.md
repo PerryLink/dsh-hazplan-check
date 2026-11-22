@@ -7,6 +7,8 @@
 
 # dsh-hazplan-check
 
+Current version `0.2.15`.
+
 **Check a HAZOP worksheet line by line: which row, which column, what is missing — in one list.**
 
 A worksheet checker for process-safety and HAZOP teams: read one sheet, run a versioned rule pack over its completeness and deviation derivation, and list differences only — never a compliance verdict.
